@@ -1,9 +1,5 @@
-export class Brand {
-
+export declare class VendorsController {
     id: number;
     name: string;
-    description: string;
     createdAt: Date;
-
-
 }

@@ -1,9 +1,6 @@
-export class Brand {
+export class vendor {
 
     id: number;
     name: string;
-    description: string;
     createdAt: Date;
-
-
 }

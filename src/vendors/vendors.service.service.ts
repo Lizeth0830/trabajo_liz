@@ -1,41 +1,37 @@
 import { Injectable } from '@nestjs/common';
-import { CreateBrandDto } from './dto/create-brand.dto';
-import { UpdateBrandDto } from './dto/update-brand.dto';
-import { Brand } from './entities/brand.entity';
+import { vendor } from './entities/vendor.entity';
 
 @Injectable()
-export class BrandsService {
-  //private: solo se puede usar al interior de la clase con this
-  private brands: Brand [] = [
+export class VendorsServiceService {}
+//private: solo se puede usar al interior de la clase con this
+  private vendors: vendor [] = [
     {
       id: 1,
-      name: "Toyota",
-      description:"Marca Japonesa",
+      name: "Alberto",
       createdAt: new Date
     },
     {
        id: 2,
-      name: "BYD",
-      description:"Vehiculos Electricos",
+      name: "Lizeth",
       createdAt: new Date
     }
   ]
   //Añadir al arreglo de brands la brand que esta llegando por el body
   create(body) {
-    this.brands.push(body)
+    this.vendor.push(body)
     return body;
   }
 
 //CRUD: select * from brands
 //this: acceder a algo private en la clase 
   findAll() {
-    return this.brands;
+    return this.vendor;
     return `This action returns all brands`;
   }
 
     //buscar la brand por id:
   findOne(id: number) {
-    let marca = this.brands.find( function(brand) {
+    let marca = this.vendor.find( function(vendor) {
       //si la encuentro, la retorno
       return brand.id === id
     })
@@ -50,7 +46,7 @@ export class BrandsService {
   //eliminar un elemento del arreglo por id
   remove(id: number): string {
     //filter: Es para retornar un nuevo arreglo con elementos que cumplan la condicional
-    this.brands = this.brands.filter(
+    this.vendor = this.vendor.filter(
      function(Brand){
       return Brand.id !== id 
      }

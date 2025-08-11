@@ -1,23 +1,29 @@
+import { id } from './../../node_modules/ci-info/index.d';
+import { BrandsService } from './brands.service';
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 
 @Controller('brands')
 export class BrandsController {
+  //inyeccion de dependencias:
+  // inyectar un componente para uso en otro sin tener  que instanciarlo
+  constructor(private readonly BrandsService: BrandsService){}
 
   @Post()
-  create() {
-    return "Aquí se van a crear las brands" 
+  create(@Body() body) {
+    return this.BrandsService.create(body)
   }
 
   @Get()
   findAll() {
-    return "Aquí se van a consultar todas las brands"
+    return this.BrandsService.findAll() ;
+  
   }
 
   //Consultar un resource por id
   //una brand
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return `Aquí se consulta la brand cuyo id es: ${id}`;
+  findOne(@Param('id') id: number) {
+    return this.BrandsService.findOne( +id);
   }
 
   @Patch(':id')
@@ -27,6 +33,9 @@ export class BrandsController {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return "Aquí se eliminará la brand con id: " + id;
+    return {
+      "success" : true,
+      "mensaje" : this.BrandsService.remove(+id)
+    }
   }
 }
