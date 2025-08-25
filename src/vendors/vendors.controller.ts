@@ -1,6 +1,6 @@
 import { } from './vendors.controller';
 import { VendorsServiceService } from './vendors.service.service';
-import { Controller, Get, Post, Patch, Delete  } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete , Param, Body } from '@nestjs/common';
 
 @Controller('vendors')
 export class VendorsController  {
@@ -23,7 +23,7 @@ export class VendorsController  {
   //una brand
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.BrandsService.findOne( +id);
+    
   }
 
   @Patch(':id')
@@ -33,9 +33,6 @@ export class VendorsController  {
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return {
-      "success" : true,
-      "mensaje" : this.BrandsService.remove(+id)
-    }
+  
   }
 }

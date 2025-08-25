@@ -5,9 +5,17 @@ meta {
 }
 
 get {
-  url: http://localhost:3010/brands
-  body: none
+  url: http://localhost:3010/vendors
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+      "id": 1,
+      "name": "Alberto ",
+      "createdAt": "2025-08-11"
+  }
 }
 
 settings {

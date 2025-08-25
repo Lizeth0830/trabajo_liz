@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VendorsController = void 0;
-class VendorsController {
+exports.vendor = void 0;
+class vendor {
     id;
     name;
     createdAt;
 }
-exports.VendorsController = VendorsController;
+exports.vendor = vendor;
 //# sourceMappingURL=vendor.entity.js.map

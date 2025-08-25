@@ -9,6 +9,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VendorsServiceService = void 0;
 const common_1 = require("@nestjs/common");
 let VendorsServiceService = class VendorsServiceService {
+    create(body) {
+    }
+    findAll() {
+    }
+    findOne(id) {
+    }
+    update(id) {
+        return `This action updates a #${id} brand`;
+    }
+    remove(id) {
+    }
 };
 exports.VendorsServiceService = VendorsServiceService;
 exports.VendorsServiceService = VendorsServiceService = __decorate([

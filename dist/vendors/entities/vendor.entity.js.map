@@ -1,1 +1,1 @@
-{"version":3,"file":"vendor.entity.js","sourceRoot":"","sources":["../../../src/vendors/entities/vendor.entity.ts"],"names":[],"mappings":";;;AAAA,MAAa,iBAAiB;IAE1B,EAAE,CAAS;IACX,IAAI,CAAS;IACb,SAAS,CAAO;CACnB;AALD,8CAKC"}
+{"version":3,"file":"vendor.entity.js","sourceRoot":"","sources":["../../../src/vendors/entities/vendor.entity.ts"],"names":[],"mappings":";;;AAAA,MAAa,MAAM;IAEf,EAAE,CAAS;IACX,IAAI,CAAS;IACb,SAAS,CAAO;CACnB;AALD,wBAKC"}

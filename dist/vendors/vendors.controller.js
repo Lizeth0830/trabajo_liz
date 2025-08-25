@@ -27,55 +27,50 @@ let VendorsController = class VendorsController {
         return this.VendorsServiceService.findAll();
     }
     findOne(id) {
-        return this.BrandsService.findOne(+id);
     }
     update(id) {
         return "Aquí se actualizará la brand con id: " + id;
     }
     remove(id) {
-        return {
-            "success": true,
-            "mensaje": this.BrandsService.remove(+id)
-        };
     }
 };
 exports.VendorsController = VendorsController;
 __decorate([
     (0, common_1.Post)(),
-    __param(0, Body()),
+    __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], vendors_controller_1.VendorsController.prototype, "create", null);
+], VendorsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], vendors_controller_1.VendorsController.prototype, "findAll", null);
+], VendorsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    __param(0, Param('id')),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
-], vendors_controller_1.VendorsController.prototype, "findOne", null);
+], VendorsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
-    __param(0, Param('id')),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], vendors_controller_1.VendorsController.prototype, "update", null);
+], VendorsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
-    __param(0, Param('id')),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], vendors_controller_1.VendorsController.prototype, "remove", null);
-exports.VendorsController = vendors_controller_1.VendorsController = __decorate([
+], VendorsController.prototype, "remove", null);
+exports.VendorsController = VendorsController = __decorate([
     (0, common_1.Controller)('vendors'),
     __metadata("design:paramtypes", [vendors_service_service_1.VendorsServiceService])
-], vendors_controller_1.VendorsController);
+], VendorsController);
 //# sourceMappingURL=vendors.controller.js.map

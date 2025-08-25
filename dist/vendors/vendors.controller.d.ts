@@ -2,12 +2,9 @@ import { VendorsServiceService } from './vendors.service.service';
 export declare class VendorsController {
     private readonly VendorsServiceService;
     constructor(VendorsServiceService: VendorsServiceService);
-    create(body: any): any;
-    findAll(): any;
-    findOne(id: number): any;
+    create(body: any): void;
+    findAll(): void;
+    findOne(id: number): void;
     update(id: string): string;
-    remove(id: string): {
-        success: boolean;
-        mensaje: any;
-    };
+    remove(id: string): void;
 }
