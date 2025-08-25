@@ -2,60 +2,38 @@ import { Injectable } from '@nestjs/common';
 import { CreateBrandDto } from './dto/create-brand.dto';
 import { UpdateBrandDto } from './dto/update-brand.dto';
 import { Brand } from './entities/brand.entity';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class BrandsService {
-  //private: solo se puede usar al interior de la clase con this
-  private brands: Brand [] = [
-    {
-      id: 1,
-      name: "Toyota",
-      description:"Marca Japonesa",
-      createdAt: new Date
-    },
-    {
-       id: 2,
-      name: "BYD",
-      description:"Vehiculos Electricos",
-      createdAt: new Date
-    }
-  ]
+
+  constructor(
+    private prisma: PrismaService
+  ){}
+
   //Añadir al arreglo de brands la brand que esta llegando por el body
   create(body) {
-    this.brands.push(body)
-    return body;
+
   }
 
 //CRUD: select * from brands
 //this: acceder a algo private en la clase 
   findAll() {
-    return this.brands;
-    return `This action returns all brands`;
+    return this.prisma.brand.findMany()
   }
 
     //buscar la brand por id:
   findOne(id: number) {
-    let marca = this.brands.find( function(brand) {
-      //si la encuentro, la retorno
-      return brand.id === id
-    })
-    return marca;
 
   }
 
   update(id: number, updateBrandDto: UpdateBrandDto) {
-    return `This action updates a #${id} brand`;
+
   }
 
   //eliminar un elemento del arreglo por id
-  remove(id: number): string {
-    //filter: Es para retornar un nuevo arreglo con elementos que cumplan la condicional
-    this.brands = this.brands.filter(
-     function(Brand){
-      return Brand.id !== id 
-     }
-    )
-    return "elemento eliminado"
+  remove(id: number) {
+
   }
 
 

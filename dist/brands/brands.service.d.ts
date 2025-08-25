@@ -1,10 +1,14 @@
 import { UpdateBrandDto } from './dto/update-brand.dto';
-import { Brand } from './entities/brand.entity';
+import { PrismaService } from 'src/prisma/prisma.service';
 export declare class BrandsService {
-    private brands;
-    create(body: any): any;
-    findAll(): Brand[] | "This action returns all brands";
-    findOne(id: number): Brand | undefined;
-    update(id: number, updateBrandDto: UpdateBrandDto): string;
-    remove(id: number): string;
+    private prisma;
+    constructor(prisma: PrismaService);
+    create(body: any): void;
+    findAll(): import("generated/prisma").Prisma.PrismaPromise<{
+        id: number;
+        name: string;
+    }[]>;
+    findOne(id: number): void;
+    update(id: number, updateBrandDto: UpdateBrandDto): void;
+    remove(id: number): void;
 }
