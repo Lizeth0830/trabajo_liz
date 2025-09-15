@@ -10,23 +10,23 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
 // Modelos del proyecto 
 model brand{
   id Int @id @default(autoincrement())
-  name String @db.VarChar(60)
+  name String
   cars car[]
 }
 
 model car{
   id Int @id @default(autoincrement())
-  plate String @db.VarChar(6)
-  release_date DateTime @db.Date
+  plate String
+  release_date DateTime
   is_available Boolean @default(true)
-  price Decimal @db.Decimal(10,2)
+  price Decimal
   //campo de la llave foranea
   brand_id Int
   //Relacion con la tabla brand
@@ -35,21 +35,35 @@ model car{
 
 model Vendedor{
   id Int @id @default(autoincrement())
-  name String @db.VarChar(60)
+  name String
 }
 
-model usuario{
-  id Int @id @default(autoincrement())
-  name String @db.VarChar(60)
-}
+
 
 model factura{
   id Int @id @default(autoincrement())
-  date DateTime @db.Date
-  usuario String 
+  date DateTime
+  usuario_id Int
+  usuario usuario @relation(fields: [usuario_id], references: [id])
 }
 
 model productos{
   id Int @id @default(autoincrement())
-  name String @db.VarChar(100)
+  name String 
+}
+
+//AUTHschemas
+model estado{
+  id Int @id @default(autoincrement())
+  estado String 
+  usuario usuario[]
+}
+
+model usuario{
+  id Int @id @default(autoincrement())
+  username String @unique
+  password String
+  estado_id Int @default(1)
+  estado estado @relation(fields: [estado_id], references: [id])
+  facturas factura[] 
 }

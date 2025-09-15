@@ -9,37 +9,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BrandsService = void 0;
+exports.CarService = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../prisma/prisma.service");
-let BrandsService = class BrandsService {
+let CarService = class CarService {
     prisma;
     constructor(prisma) {
         this.prisma = prisma;
     }
-    async create(newbrand) {
-        return await this.prisma.brand.create({
+    async create(newCar) {
+        return await this.prisma.car.create({
             data: {
-                name: newbrand.name
+                plate: newCar.plate,
+                release_date: new Date(newCar.release_date),
+                is_available: newCar.is_available,
+                price: newCar.price,
+                brand_id: newCar.brand_id
             }
         });
     }
-    findAll() {
-        return this.prisma.brand.findMany();
-    }
-    async findOne(id) {
-        return await this.prisma.brand.findFirst({
-            where: { id: id }
-        });
-    }
-    update(id, updateBrandDto) {
-    }
-    remove(id) {
-    }
 };
-exports.BrandsService = BrandsService;
-exports.BrandsService = BrandsService = __decorate([
+exports.CarService = CarService;
+exports.CarService = CarService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [prisma_service_1.PrismaService])
-], BrandsService);
-//# sourceMappingURL=brands.service.js.map
+], CarService);
+//# sourceMappingURL=car.service.js.map

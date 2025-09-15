@@ -1,6 +1,7 @@
 import { id } from './../../node_modules/ci-info/index.d';
 import { BrandsService } from './brands.service';
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { CreateBrandDto } from './dto/create-brand.dto';
 
 @Controller('brands')
 export class BrandsController {
@@ -8,10 +9,12 @@ export class BrandsController {
   // inyectar un componente para uso en otro sin tener  que instanciarlo
   constructor(private readonly BrandsService: BrandsService){}
 
+  //Crear una brand
   @Post()
-  create(@Body() body) {
-    return this.BrandsService.create(body)
+  create(@Body()newbrand: CreateBrandDto) {
+    return this.BrandsService.create(newbrand);
   }
+
 
   @Get()
   findAll() {

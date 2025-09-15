@@ -11,14 +11,16 @@ const common_1 = require("@nestjs/common");
 const brands_controller_1 = require("./brands.controller");
 const brands_service_1 = require("./brands.service");
 const prisma_module_1 = require("../prisma/prisma.module");
+const car_service_1 = require("./car.service");
+const car_controller_1 = require("./car.controller");
 let BrandsModule = class BrandsModule {
 };
 exports.BrandsModule = BrandsModule;
 exports.BrandsModule = BrandsModule = __decorate([
     (0, common_1.Module)({
         imports: [prisma_module_1.PrismaModule],
-        controllers: [brands_controller_1.BrandsController],
-        providers: [brands_service_1.BrandsService]
+        controllers: [brands_controller_1.BrandsController, car_controller_1.CarController],
+        providers: [brands_service_1.BrandsService, car_service_1.CarService]
     })
 ], BrandsModule);
 //# sourceMappingURL=brands.module.js.map

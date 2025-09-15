@@ -12,8 +12,12 @@ export class BrandsService {
   ){}
 
   //Añadir al arreglo de brands la brand que esta llegando por el body
-  create(body) {
-
+  async create(newbrand: CreateBrandDto) {
+    return await this.prisma.brand.create({
+      data:{
+        name:newbrand.name
+      }
+    })
   }
 
 //CRUD: select * from brands
@@ -23,8 +27,10 @@ export class BrandsService {
   }
 
     //buscar la brand por id:
-  findOne(id: number) {
-
+  async findOne(id: number) {
+    return await this.prisma.brand.findFirst({
+      where: {id:id}
+    })
   }
 
   update(id: number, updateBrandDto: UpdateBrandDto) {

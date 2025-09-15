@@ -15,13 +15,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BrandsController = void 0;
 const brands_service_1 = require("./brands.service");
 const common_1 = require("@nestjs/common");
+const create_brand_dto_1 = require("./dto/create-brand.dto");
 let BrandsController = class BrandsController {
     BrandsService;
     constructor(BrandsService) {
         this.BrandsService = BrandsService;
     }
-    create(body) {
-        return this.BrandsService.create(body);
+    create(newbrand) {
+        return this.BrandsService.create(newbrand);
     }
     findAll() {
         return this.BrandsService.findAll();
@@ -44,7 +45,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
+    __metadata("design:paramtypes", [create_brand_dto_1.CreateBrandDto]),
     __metadata("design:returntype", void 0)
 ], BrandsController.prototype, "create", null);
 __decorate([
