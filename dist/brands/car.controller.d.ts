@@ -11,4 +11,24 @@ export declare class CarController {
         price: import("generated/prisma/runtime/library").Decimal;
         brand_id: number;
     }>;
+    findById(id: string): Promise<{
+        success: boolean;
+        data: {
+            id: number;
+            plate: string;
+            release_date: Date;
+            is_available: boolean;
+            price: import("generated/prisma/runtime/library").Decimal;
+            brand_id: number;
+        };
+    }>;
+    findAll(): Promise<{
+        id: number;
+        plate: string;
+        release_date: Date;
+        is_available: boolean;
+        price: import("generated/prisma/runtime/library").Decimal;
+        brand_id: number;
+    }[]>;
+    remove(id: string): void;
 }

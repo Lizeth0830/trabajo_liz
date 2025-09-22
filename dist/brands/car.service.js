@@ -18,15 +18,71 @@ let CarService = class CarService {
         this.prisma = prisma;
     }
     async create(newCar) {
-        return await this.prisma.car.create({
-            data: {
-                plate: newCar.plate,
-                release_date: new Date(newCar.release_date),
-                is_available: newCar.is_available,
-                price: newCar.price,
-                brand_id: newCar.brand_id
+        let marca = await this.prisma.brand.findFirst({
+            where: {
+                id: newCar.brand_id
             }
         });
+        if (!marca) {
+            throw new common_1.HttpException('La marca no existe', 400);
+        }
+        let existe = await this.prisma.car.findFirst({
+            where: { plate: newCar.plate }
+        });
+        if (existe) {
+            throw new common_1.HttpException("LA PLACA YA EXISTE", 404);
+        }
+        else {
+            return await this.prisma.car.create({
+                data: {
+                    plate: newCar.plate,
+                    release_date: new Date(newCar.release_date),
+                    is_available: newCar.is_available,
+                    price: newCar.price,
+                    brand: {
+                        connect: { id: newCar.brand_id }
+                    }
+                }
+            });
+        }
+    }
+    async findById(id) {
+        let existe = await this.prisma.car.findFirst({
+            where: { id: id }
+        });
+        if (!existe) {
+            throw new common_1.HttpException('El carro no existe', 404);
+        }
+        else {
+            return {
+                "success": true,
+                "data": existe
+            };
+        }
+    }
+    async findAll() {
+        let carros = await this.prisma.car.findMany({
+            orderBy: { 'plate': 'asc' }
+        });
+        if (carros.length === 0) {
+            throw new common_1.HttpException('No hay carros', 404);
+        }
+        else {
+            return carros;
+        }
+    }
+    async delete(id) {
+        let existe = await this.prisma.car.findFirst({ where: { id: id } });
+        if (!existe) {
+            throw new common_1.HttpException('El carro no existe', 404);
+        }
+        else {
+            await this.prisma.car.delete({ where: { id: id } });
+            return {
+                "success": true,
+                "message": "El carro ha sido eliminado"
+            };
+        }
     }
 };
 exports.CarService = CarService;

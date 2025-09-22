@@ -24,6 +24,15 @@ let CarController = class CarController {
     create(newCar) {
         return this.carService.create(newCar);
     }
+    findById(id) {
+        return this.carService.findById(parseInt(id));
+    }
+    findAll() {
+        return this.carService.findAll();
+    }
+    remove(id) {
+        this.carService.delete(parseInt(id));
+    }
 };
 exports.CarController = CarController;
 __decorate([
@@ -33,6 +42,26 @@ __decorate([
     __metadata("design:paramtypes", [create_car_dto_1.CreateCarDto]),
     __metadata("design:returntype", void 0)
 ], CarController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CarController.prototype, "findById", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], CarController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Delete)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], CarController.prototype, "remove", null);
 exports.CarController = CarController = __decorate([
     (0, common_1.Controller)('cars'),
     __metadata("design:paramtypes", [car_service_1.CarService])
